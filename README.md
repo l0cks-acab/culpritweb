@@ -29,6 +29,40 @@ Scans started some other way (F8, `/culprit scan`) get a link sent to operators 
 - **Server**: versions, JVM, mods, and the server's health when the report was made.
 - Drop a JSON report saved by Culprit (`culprit/reports/*.json`) on the home page to view it offline.
 
+## Examples
+
+A 10 second profile of a test server with villagers, zombies, cows, a field of hoppers and 64 force-loaded chunks:
+
+```
+> /culpritweb profiler 10
+Profiling the server for 10 s. /culpritweb profiler stop ends it early.
+Profile done: http://localhost:8765/r/S3GzcaTeoU
+> /culpritweb health
+Live health (60 min): http://localhost:8765/live/DR6oUvTFqQ
+```
+
+**Overview**: average and worst tick, the tick in parts, each tick through the profile.
+
+![Overview](docs/screenshots/overview.png)
+
+**Tree**: part, mod, type, each thing.
+
+![Tree](docs/screenshots/tree.png)
+
+**Things**: sortable and filterable; click a row to copy a /tp.
+
+![Things](docs/screenshots/things.png)
+
+**Chunk map**: why each chunk is loaded and who keeps it loaded.
+
+![Chunk map](docs/screenshots/chunk-map.png)
+
+**Live health**: TPS, MSPT, CPU and memory, refreshed every second.
+
+![Live health](docs/screenshots/live.png)
+
+More: [lag spikes](docs/screenshots/lag-spikes.png), [server info](docs/screenshots/server.png), [phone](docs/screenshots/mobile.png).
+
 ## Setup
 
 `config/culpritweb-common.toml`:
