@@ -96,7 +96,7 @@ public final class Profiler {
         CulpritWeb.LOG.info("Culprit scan report: {}", url("/r/" + id));
         Component msg = Component.literal("Culprit scan finished: ").withStyle(ChatFormatting.GRAY).append(link("/r/" + id));
         for (ServerPlayer p : server.getPlayerList().getPlayers()) {
-            if (p.hasPermissions(Config.PERMISSION.get())) {
+            if (Commands.check().check(p.permissions())) {
                 p.sendSystemMessage(msg);
             }
         }
@@ -109,7 +109,7 @@ public final class Profiler {
     static MutableComponent link(String path) {
         String url = url(path);
         return Component.literal(url).withStyle(s -> s.withColor(0xF06CC8).withUnderlined(true)
-                .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url))
-                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Open in your browser"))));
+                .withClickEvent(new ClickEvent.OpenUrl(java.net.URI.create(url)))
+                .withHoverEvent(new HoverEvent.ShowText(Component.literal("Open in your browser"))));
     }
 }

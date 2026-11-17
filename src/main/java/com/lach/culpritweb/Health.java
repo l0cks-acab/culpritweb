@@ -128,7 +128,7 @@ public final class Health {
         JsonArray worlds = new JsonArray();
         for (ServerLevel level : server.getAllLevels()) {
             JsonObject w = new JsonObject();
-            w.addProperty("dim", level.dimension().location().toString());
+            w.addProperty("dim", level.dimension().identifier().toString());
             w.addProperty("chunks", level.getChunkSource().getLoadedChunksCount());
             int entities = 0;
             for (Entity ignored : level.getAllEntities()) {

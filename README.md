@@ -2,7 +2,7 @@
 
 A web viewer for [Culprit](https://github.com/Lawman-afk/CulpritMCMod). Run a command, get a link, open it in a browser and see what lags your server. Works like spark's viewer, but served by the Minecraft server itself: nothing is uploaded anywhere.
 
-This branch is for Minecraft 1.21.1 (NeoForge 21.1.266+). Needs Culprit 0.1.0+ on the server.
+This branch is for Minecraft 26.1.2 (NeoForge 26.1.2.126+). Needs Culprit 0.1.0+ on the server.
 
 ## Commands
 
@@ -41,7 +41,7 @@ Reports are kept as gzipped JSON in `culpritweb/reports/`. A link's random id is
 
 ## Building
 
-JDK 21, then `./gradlew build`. Culprit's jar (MIT, built from its `1.21.1` branch) is in `libs/`.
+JDK 25, then `./gradlew build`. Culprit's jar (MIT, built from its `26.1.2` branch) is in `libs/`.
 
 ## Licence
 

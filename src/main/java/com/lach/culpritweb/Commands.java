@@ -19,6 +19,16 @@ import net.minecraft.network.chat.Component;
 public final class Commands {
     private Commands() {}
 
+    static net.minecraft.server.permissions.PermissionCheck check() {
+        return switch (Config.PERMISSION.get()) {
+            case 0 -> net.minecraft.commands.Commands.LEVEL_ALL;
+            case 1 -> net.minecraft.commands.Commands.LEVEL_MODERATORS;
+            case 3 -> net.minecraft.commands.Commands.LEVEL_ADMINS;
+            case 4 -> net.minecraft.commands.Commands.LEVEL_OWNERS;
+            default -> net.minecraft.commands.Commands.LEVEL_GAMEMASTERS;
+        };
+    }
+
     static void register(CommandDispatcher<CommandSourceStack> d) {
         for (String root : new String[] {"culpritweb", "cweb"}) {
             d.register(tree(root));
@@ -27,7 +37,7 @@ public final class Commands {
 
     private static LiteralArgumentBuilder<CommandSourceStack> tree(String root) {
         return net.minecraft.commands.Commands.literal(root)
-                .requires(s -> s.hasPermission(Config.PERMISSION.get()))
+                .requires(s -> check().check(s.permissions()))
                 .then(net.minecraft.commands.Commands.literal("profiler")
                         .executes(c -> profile(c, Config.DEFAULT_SECONDS.get()))
                         .then(net.minecraft.commands.Commands.argument("seconds", IntegerArgumentType.integer(1, 600))

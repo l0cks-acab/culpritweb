@@ -9,15 +9,11 @@ group = mod_group_id
 
 base { archivesName = mod_id }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     version = project.neo_version
 
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     runs {
         client {
@@ -48,8 +44,8 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     // Culprit (MIT, github.com/Lawman-afk/CulpritMCMod), built from its 1.21.1 branch
-    compileOnly files('libs/culprit-mc1.21.1-0.1.0.jar')
-    runtimeOnly files('libs/culprit-mc1.21.1-0.1.0.jar')
+    compileOnly files('libs/culprit-mc26.1.2-0.1.0.jar')
+    runtimeOnly files('libs/culprit-mc26.1.2-0.1.0.jar')
 }
 
 var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
